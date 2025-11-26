@@ -1,65 +1,214 @@
-import Image from "next/image";
+"use client";
 
-export default function Home() {
+import { useState, useEffect } from "react";
+import { type Fish } from "./lib/fish";
+import {
+  loadFishData,
+  getFishByName,
+  getFishBySpot,
+  getFishByLure,
+} from "./lib/fishUtils";
+
+export default function FishingPage() {
+  const [fishData, setFishData] = useState<Fish[]>([]);
+  const [query, setQuery] = useState<string>("");
+  const [results, setResults] = useState<Fish[]>([]);
+  const [mode, setMode] = useState<"name" | "spot" | "lure">("name");
+  const [showMap, setShowMap] = useState<boolean>(false);
+  const [showTable, setShowTable] = useState<boolean>(false);
+  const [spotMode, setSpotMode] = useState<"include-any" | "specific-only">(
+    "include-any"
+  );
+
+  useEffect(() => {
+    loadFishData().then(setFishData);
+  }, []);
+
+  const handleSearch = () => {
+    if (!fishData.length) return;
+
+    if (mode === "name") {
+      setResults(getFishByName(fishData, query));
+    }
+
+    if (mode === "lure") {
+      setResults(getFishByLure(fishData, query));
+    }
+
+    if (mode === "spot") {
+      const spot = Number(query);
+      if (!spot) {
+        setResults([]);
+        return;
+      }
+
+      if (spotMode === "include-any") {
+        setResults(
+          fishData.filter(
+            (f) =>
+              f.spots === "any" ||
+              (Array.isArray(f.spots) && f.spots.includes(spot))
+          )
+        );
+      } else {
+        // specific-only mode
+        setResults(
+          fishData.filter(
+            (f) => Array.isArray(f.spots) && f.spots.includes(spot)
+          )
+        );
+      }
+    }
+  };
+
+  const handleModeChange = (newMode: "name" | "spot" | "lure") => {
+    setMode(newMode);
+    setResults([]);
+    setQuery("");
+  };
+
+  const handleTableView = () => {
+    setShowTable(!showTable);
+    setShowMap(false);
+    setResults(fishData);
+    setQuery("");
+  };
+
   return (
-    <div className="flex min-h-screen items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex min-h-screen w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the page.tsx file.
-          </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
-          </p>
-        </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
+    <div className="max-w-2xl mx-auto p-6">
+      <h1 className="text-3xl font-bold mb-6 text-center">
+        Hay Day Fishing Finder 🎣
+      </h1>
+
+      <div className="flex gap-3 mb-4 justify-center">
+        {["name", "spot", "lure"].map((m) => (
+          <button
+            key={m}
+            onClick={() => handleModeChange(m as "name" | "spot" | "lure")}
+            className={`px-4 py-2 rounded-md ${
+              mode === m ? "bg-blue-400 text-white" : "bg-gray-100 text-black"
+            }`}
           >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={16}
-            />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
+            {m}
+          </button>
+        ))}
+
+        <button
+          onClick={() => setShowMap(!showMap)}
+          className={`px-4 py-2 rounded-md ${
+            showMap ? "bg-yellow-300 text-gray-500" : "bg-gray-100 text-black"
+          }`}
+        >
+          Show Map
+        </button>
+        <button
+          onClick={() => handleTableView()}
+          className={`px-4 py-2 rounded-md ${
+            showTable ? "bg-green-300 text-gray-500" : "bg-gray-100 text-black"
+          }`}
+        >
+          Table
+        </button>
+      </div>
+      <div>
+        {mode === "spot" && (
+          <select
+            value={spotMode}
+            onChange={(e) =>
+              setSpotMode(e.target.value as "include-any" | "specific-only")
+            }
+            className="w-full p-2 border rounded-md mb-3"
           >
-            Documentation
-          </a>
+            <option value="include-any">Include all spots</option>
+            <option value="specific-only">Search only by specific spot</option>
+          </select>
+        )}
+      </div>
+
+      {showMap && !showTable && (
+        <div className="mb-4">
+          <img
+            src="/FishingMap_Names.png"
+            alt="Hay Day Fishing Map"
+            className="w-full rounded-md border"
+          />
         </div>
-      </main>
+      )}
+      {showTable && (
+        <div className="mb-4 overflow-x-auto">
+          <table className="w-full border-collapse">
+            <thead>
+              <tr>
+                <th className="border p-2">Name</th>
+                <th className="border p-2">Lure</th>
+                <th className="border p-2">Spots</th>
+                <th className="border p-2">Circle</th>
+                <th className="border p-2">Event Only</th>
+              </tr>
+            </thead>
+            <tbody>
+              {results.map((fish) => (
+                <tr key={fish.id} className="text-center">
+                  <td className="border p-2">{fish.name}</td>
+                  <td className="border p-2">{fish.lure.join(" / ")}</td>
+                  <td className="border p-2">
+                    {fish.spots === "any" ? "Any spot" : fish.spots.join(", ")}
+                  </td>
+                  <td className="border p-2">{fish.circle}</td>
+                  <td className="border p-2">
+                    {fish.eventOnly ? "Yes" : "No"}
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+      )}
+      {!showTable && (
+        <div>
+          <input
+            type="text"
+            placeholder={`Search by ${mode}...`}
+            className="w-full p-3 border rounded-md mb-3"
+            value={query}
+            onChange={(e) => setQuery(e.target.value)}
+          />
+
+          <button
+            onClick={handleSearch}
+            className="w-full p-3 bg-green-600 text-white font-semibold rounded-md"
+          >
+            Search
+          </button>
+
+          <div className="mt-6 space-y-4">
+            {results.map((fish) => (
+              <div
+                key={fish.id}
+                className={`p-4 border rounded-md shadow-sm bg-[${
+                  fish.lure[0] ?? "cyan"
+                }]-100`}
+              >
+                <h2 className="font-bold text-lg">{fish.name}</h2>
+                <p>
+                  <span className="font-semibold">Lure:</span>{" "}
+                  {fish.lure.join(" / ")}
+                </p>
+                <p>
+                  <span className="font-semibold">Spot:</span>{" "}
+                  {fish.spots === "any" ? "Any spot" : fish.spots.join(", ")}
+                </p>
+                <p>
+                  <span className="font-semibold">Circle:</span> {fish.circle}
+                </p>
+                {fish.eventOnly && (
+                  <p className="text-red-600 font-bold">Event Only</p>
+                )}
+              </div>
+            ))}
+          </div>
+        </div>
+      )}
     </div>
   );
 }
