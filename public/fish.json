@@ -1,0 +1,348 @@
+{
+  "fish": [
+    {
+      "id": 1,
+      "name": "Copper Redhorse",
+      "lure": ["red"],
+      "spots": "any",
+      "circle": "large",
+      "eventOnly": false
+    },
+    {
+      "id": 2,
+      "name": "Roach",
+      "lure": ["green"],
+      "spots": "any",
+      "circle": "large",
+      "eventOnly": false
+    },
+    {
+      "id": 3,
+      "name": "Coho Salmon",
+      "lure": ["green", "purple"],
+      "spots": [2],
+      "circle": "small",
+      "eventOnly": false
+    },
+    {
+      "id": 4,
+      "name": "Yellow Perch",
+      "lure": ["green", "gold"],
+      "spots": "any",
+      "circle": "large",
+      "eventOnly": false
+    },
+    {
+      "id": 5,
+      "name": "Fallfish",
+      "lure": ["blue"],
+      "spots": "any",
+      "circle": "medium",
+      "eventOnly": false
+    },
+    {
+      "id": 6,
+      "name": "Salmon",
+      "lure": ["blue", "purple"],
+      "spots": [8],
+      "circle": "small",
+      "eventOnly": false
+    },
+    {
+      "id": 7,
+      "name": "Bluegill",
+      "lure": ["blue", "gold"],
+      "spots": "any",
+      "circle": "medium",
+      "eventOnly": false
+    },
+    {
+      "id": 8,
+      "name": "Rainbowfish",
+      "lure": ["purple", "green"],
+      "spots": "any",
+      "circle": "medium",
+      "eventOnly": false
+    },
+    {
+      "id": 9,
+      "name": "Bluespotted Sunfish",
+      "lure": ["purple", "blue"],
+      "spots": "any",
+      "circle": "medium",
+      "eventOnly": false
+    },
+    {
+      "id": 10,
+      "name": "Bitterling",
+      "lure": ["purple"],
+      "spots": [6],
+      "circle": "small",
+      "eventOnly": false
+    },
+    {
+      "id": 11,
+      "name": "Asp",
+      "lure": ["purple", "gold"],
+      "spots": "any",
+      "circle": "medium",
+      "eventOnly": false
+    },
+    {
+      "id": 12,
+      "name": "Speckled Dace",
+      "lure": ["gold"],
+      "spots": [6],
+      "circle": "small",
+      "eventOnly": false
+    },
+    {
+      "id": 13,
+      "name": "Huchen",
+      "lure": ["red"],
+      "spots": "any",
+      "circle": "large",
+      "eventOnly": false
+    },
+    {
+      "id": 14,
+      "name": "Shadow Bass",
+      "lure": ["green", "purple"],
+      "spots": "any",
+      "circle": "large",
+      "eventOnly": false
+    },
+    {
+      "id": 15,
+      "name": "Northern Pike",
+      "lure": ["green", "gold"],
+      "spots": "any",
+      "circle": "large",
+      "eventOnly": false
+    },
+    {
+      "id": 16,
+      "name": "Rainbow Smelt",
+      "lure": ["blue"],
+      "spots": [3],
+      "circle": "small",
+      "eventOnly": false
+    },
+    {
+      "id": 17,
+      "name": "Spotted Sunfish",
+      "lure": ["purple", "green"],
+      "spots": "any",
+      "circle": "medium",
+      "eventOnly": false
+    },
+    {
+      "id": 18,
+      "name": "Sauger",
+      "lure": ["purple", "blue"],
+      "spots": "any",
+      "circle": "medium",
+      "eventOnly": false
+    },
+    {
+      "id": 19,
+      "name": "Arctic Charr",
+      "lure": ["purple", "gold"],
+      "spots": "any",
+      "circle": "medium",
+      "eventOnly": false
+    },
+    {
+      "id": 20,
+      "name": "Rudd",
+      "lure": ["gold", "green"],
+      "spots": "any",
+      "circle": "small",
+      "eventOnly": false
+    },
+    {
+      "id": 21,
+      "name": "Yellow Bass",
+      "lure": ["gold", "blue"],
+      "spots": "any",
+      "circle": "small",
+      "eventOnly": false
+    },
+    {
+      "id": 22,
+      "name": "Greater Redhorse",
+      "lure": ["gold", "purple"],
+      "spots": "any",
+      "circle": "small",
+      "eventOnly": false
+    },
+    {
+      "id": 23,
+      "name": "Golden Trout",
+      "lure": ["gold"],
+      "spots": [3],
+      "circle": "small",
+      "eventOnly": false
+    },
+    {
+      "id": 24,
+      "name": "Largemouth Bass",
+      "lure": ["green"],
+      "spots": "any",
+      "circle": "large",
+      "eventOnly": false
+    },
+    {
+      "id": 25,
+      "name": "Brook Trout",
+      "lure": ["green", "blue"],
+      "spots": [8],
+      "circle": "small",
+      "eventOnly": false
+    },
+    {
+      "id": 26,
+      "name": "Grass Carp",
+      "lure": ["green", "purple"],
+      "spots": [2],
+      "circle": "small",
+      "eventOnly": false
+    },
+    {
+      "id": 27,
+      "name": "Green Sunfish",
+      "lure": ["green", "gold"],
+      "spots": "any",
+      "circle": "large",
+      "eventOnly": false
+    },
+    {
+      "id": 28,
+      "name": "Northern Studfish",
+      "lure": ["blue", "green"],
+      "spots": "any",
+      "circle": "medium",
+      "eventOnly": false
+    },
+    {
+      "id": 29,
+      "name": "Striped Bass",
+      "lure": ["blue"],
+      "spots": "any",
+      "circle": "medium",
+      "eventOnly": false
+    },
+    {
+      "id": 30,
+      "name": "Longear Sunfish",
+      "lure": ["purple"],
+      "spots": "any",
+      "circle": "medium",
+      "eventOnly": false
+    },
+    {
+      "id": 31,
+      "name": "Zander",
+      "lure": ["green", "gold"],
+      "spots": "any",
+      "circle": "event",
+      "eventOnly": true
+    },
+    {
+      "id": 32,
+      "name": "Giant Barb",
+      "lure": ["purple", "blue"],
+      "spots": "any",
+      "circle": "event",
+      "eventOnly": true
+    },
+    {
+      "id": 33,
+      "name": "Lake Sturgeon",
+      "lure": ["blue", "purple"],
+      "spots": "any",
+      "circle": "event",
+      "eventOnly": true
+    },
+    {
+      "id": 34,
+      "name": "Carp",
+      "lure": ["gold", "green"],
+      "spots": "any",
+      "circle": "event",
+      "eventOnly": true
+    },
+    {
+      "id": 35,
+      "name": "Nile Perch",
+      "lure": ["purple", "blue"],
+      "spots": "any",
+      "circle": "event",
+      "eventOnly": true
+    },
+    {
+      "id": 36,
+      "name": "Red-Tailed Catfish",
+      "lure": ["green", "red"],
+      "spots": [9],
+      "circle": "event",
+      "eventOnly": true
+    },
+    {
+      "id": 37,
+      "name": "White Catfish",
+      "lure": ["blue"],
+      "spots": [9],
+      "circle": "small",
+      "eventOnly": false
+    },
+    {
+      "id": 38,
+      "name": "Black Bullhead",
+      "lure": ["gold", "green"],
+      "spots": [9],
+      "circle": "small",
+      "eventOnly": false
+    },
+    {
+      "id": 39,
+      "name": "Goldfish",
+      "lure": ["gold"],
+      "spots": [11],
+      "circle": "small",
+      "eventOnly": false
+    },
+    {
+      "id": 40,
+      "name": "Sockeye Salmon",
+      "lure": ["red"],
+      "spots": "any",
+      "circle": "large",
+      "eventOnly": false
+    },
+    {
+      "id": 41,
+      "name": "Lake Whitefish",
+      "lure": ["blue", "green"],
+      "spots": [10],
+      "circle": "small",
+      "eventOnly": false
+    },
+    {
+      "id": 42,
+      "name": "Quillback",
+      "lure": ["blue", "purple"],
+      "spots": [12],
+      "circle": "small",
+      "eventOnly": false
+    },
+    {
+      "id": 43,
+      "name": "Perch",
+      "lure": ["green", "blue"],
+      "spots": [12],
+      "circle": "small",
+      "eventOnly": false
+    }
+  ]
+}
