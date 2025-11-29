@@ -241,40 +241,35 @@ export default function FishingPage() {
         {!showTable && (
           <div>
             {mode === "lure" ? (
-              <div className="mb-3 p-3 border rounded-md">
-                {["red", "blue", "green", "purple", "gold"].map((m) => (
-                  <button
-                    key={m}
-                    onClick={() =>
-                      setQuery(
-                        m as "red" | "blue" | "green" | "purple" | "gold"
-                      )
-                    }
-                    className={`px-4 py-2 m-2 rounded-md ${
-                      query === m
-                        ? m === "red"
-                          ? "bg-red-500 text-white"
-                          : m === "blue"
-                          ? "bg-blue-500 text-white"
-                          : m === "green"
-                          ? "bg-green-500 text-white"
-                          : m === "purple"
-                          ? "bg-purple-500 text-white"
-                          : "bg-yellow-500 text-white"
-                        : m === "red"
-                        ? "bg-red-100 text-red-700"
-                        : m === "blue"
-                        ? "bg-blue-100 text-blue-700"
-                        : m === "green"
-                        ? "bg-green-100 text-green-700"
-                        : m === "purple"
-                        ? "bg-purple-100 text-purple-700"
-                        : "bg-yellow-100 text-yellow-700"
-                    }`}
-                  >
-                    {m}
-                  </button>
-                ))}
+              <div className="flex flex-wrap">
+                {["red", "blue", "green", "purple", "gold"].map((m) => {
+                  const selected = query === m;
+                  return (
+                    <button
+                      key={m}
+                      onClick={() =>
+                        setQuery(
+                          m as "red" | "blue" | "green" | "purple" | "gold"
+                        )
+                      }
+                      className={`p-1 m-2 rounded-md border transition-transform transform ${
+                        selected
+                          ? "scale-105 ring-2 ring-offset-2"
+                          : "hover:scale-105"
+                      }`}
+                      aria-pressed={selected}
+                      title={`${m} lure`}
+                    >
+                      <img
+                        src={`/lures/${m}_Lure.webp`}
+                        alt={`${m} lure`}
+                        className={`w-12 h-12 object-contain ${
+                          selected ? "filter saturate-150" : ""
+                        }`}
+                      />
+                    </button>
+                  );
+                })}
               </div>
             ) : (
               <div>
