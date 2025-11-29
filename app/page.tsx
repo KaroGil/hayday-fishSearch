@@ -68,6 +68,7 @@ export default function FishingPage() {
 
     const q = query.trim();
     if (q === "") {
+      // eslint-disable-next-line react-hooks/set-state-in-effect
       setResults([]);
       return;
     }
@@ -331,7 +332,7 @@ export default function FishingPage() {
                     {fish.lure.map((l) => (
                       <Image
                         key={l}
-                        src={`/lures/${l}_Lure.webp`}
+                        src={`/lures/${l.toUpperCase()}_Lure.webp`}
                         alt={`${l} lure`}
                         width={24}
                         height={24}
