@@ -264,14 +264,14 @@ export default function FishingPage() {
           <div>
             {mode === "lure" ? (
               <div className="flex flex-wrap">
-                {["red", "blue", "green", "purple", "gold"].map((m) => {
+                {["Red", "Blue", "Green", "Purple", "Gold"].map((m) => {
                   const selected = query === m;
                   return (
                     <button
                       key={m}
                       onClick={() =>
                         setQuery(
-                          m as "red" | "blue" | "green" | "purple" | "gold"
+                          m as "Red" | "Blue" | "Green" | "Purple" | "Gold"
                         )
                       }
                       className={`p-1 m-2 rounded-md border transition-transform transform ${
