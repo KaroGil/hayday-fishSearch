@@ -8,6 +8,7 @@ import {
   getFishBySpot,
   getFishByLure,
 } from "./lib/fishUtils";
+import FishName from "./components/fishName";
 
 export default function FishingPage() {
   const [fishData, setFishData] = useState<Fish[]>([]);
@@ -120,7 +121,9 @@ export default function FishingPage() {
   return (
     <div className="flex">
       <div className="flex items-baseline justify-center">
-        {showInfo && <img src="/lures.png" alt="Fish Lures" />}
+        {showInfo && (
+          <Image src="/lures.png" alt="Fish Lures" width={800} height={600} />
+        )}
       </div>
       <div className="max-w-2xl mx-auto p-6">
         <h1 className="text-3xl font-bold mb-6 text-center">
@@ -223,7 +226,9 @@ export default function FishingPage() {
               <tbody>
                 {results.map((fish) => (
                   <tr key={fish.id} className="text-center">
-                    <td className="border p-2">{fish.name}</td>
+                    <td className="border p-2">
+                      <FishName name={fish.name} />
+                    </td>
                     <td className="border p-2">
                       {fish.lure.map((l) => (
                         <Image
@@ -242,7 +247,11 @@ export default function FishingPage() {
                         : fish.spots.join(", ")}
                     </td>
                     <td className="border p-2">{fish.circle}</td>
-                    <td className="border p-2">
+                    <td
+                      className={`border p-2 ${
+                        fish.eventOnly ? "bg-red-400 font-bold" : ""
+                      }`}
+                    >
                       {fish.eventOnly ? "Yes" : "No"}
                     </td>
                   </tr>
@@ -313,7 +322,10 @@ export default function FishingPage() {
                     fish.lure[0] ?? "cyan"
                   }]-100`}
                 >
-                  <h2 className="font-bold text-lg">{fish.name}</h2>
+                  <h2 className="font-bold text-lg">
+                    {" "}
+                    <FishName name={fish.name} />
+                  </h2>
                   <p>
                     <span className="font-semibold">Lure:</span>{" "}
                     {fish.lure.map((l) => (
@@ -344,7 +356,9 @@ export default function FishingPage() {
         )}
       </div>
       <div className="flex justify-center items-baseline">
-        {showInfo && <img src="/rarity.jpg" alt="Fish Rarity" />}
+        {showInfo && (
+          <Image src="/rarity.jpg" alt="Fish Rarity" width={800} height={600} />
+        )}
       </div>
     </div>
   );
