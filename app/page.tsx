@@ -234,7 +234,7 @@ export default function FishingPage() {
                       {fish.lure.map((l) => (
                         <Image
                           key={l}
-                          src={`/lures/${l.toUpperCase()}_Lure.webp`}
+                          src={`/lures/${l}_Lure.webp`}
                           alt={`${l} lure`}
                           width={24}
                           height={24}
@@ -342,7 +342,7 @@ export default function FishingPage() {
                     {fish.lure.map((l) => (
                       <Image
                         key={l}
-                        src={`/lures/${l.toUpperCase()}_Lure.webp`}
+                        src={`/lures/${l}_Lure.webp`}
                         alt={`${l} lure`}
                         width={24}
                         height={24}
@@ -354,7 +354,7 @@ export default function FishingPage() {
                     <span className="font-semibold">Spot:</span>{" "}
                     {fish.spots === "any" ? "Any spot" : fish.spots.join(", ")}
                   </p>
-                  <p className="flex flex-row items-center gap-2">
+                  <div className="flex flex-row items-center gap-2">
                     <span className="font-semibold">Circle:</span>{" "}
                     {
                       <p
@@ -369,7 +369,7 @@ export default function FishingPage() {
                         {fish.circle}
                       </p>
                     }
-                  </p>
+                  </div>
                   {fish.eventOnly && (
                     <p className="text-red-600 font-bold">Event Only</p>
                   )}
