@@ -1,5 +1,5 @@
 "use client";
-
+import Image from "next/image";
 import { useState, useEffect } from "react";
 import { type Fish } from "./lib/fish";
 import {
@@ -199,10 +199,12 @@ export default function FishingPage() {
 
         {(showMap || showInfo) && !showTable && (
           <div className="mb-4">
-            <img
+            <Image
               src="/FishingMap_Names.png"
               alt="Hay Day Fishing Map"
-              className="w-full rounded-md border"
+              width={800}
+              height={600}
+              className="rounded-md border"
             />
           </div>
         )}
@@ -222,7 +224,18 @@ export default function FishingPage() {
                 {results.map((fish) => (
                   <tr key={fish.id} className="text-center">
                     <td className="border p-2">{fish.name}</td>
-                    <td className="border p-2">{fish.lure.join(" / ")}</td>
+                    <td className="border p-2">
+                      {fish.lure.map((l) => (
+                        <Image
+                          key={l}
+                          src={`/lures/${l}_Lure.webp`}
+                          alt={`${l} lure`}
+                          width={24}
+                          height={24}
+                          className="inline-block mx-1"
+                        />
+                      ))}
+                    </td>
                     <td className="border p-2">
                       {fish.spots === "any"
                         ? "Any spot"
@@ -260,10 +273,12 @@ export default function FishingPage() {
                       aria-pressed={selected}
                       title={`${m} lure`}
                     >
-                      <img
+                      <Image
                         src={`/lures/${m}_Lure.webp`}
                         alt={`${m} lure`}
-                        className={`w-12 h-12 object-contain ${
+                        width={48}
+                        height={40}
+                        className={`object-contain ${
                           selected ? "filter saturate-150" : ""
                         }`}
                       />
@@ -301,7 +316,16 @@ export default function FishingPage() {
                   <h2 className="font-bold text-lg">{fish.name}</h2>
                   <p>
                     <span className="font-semibold">Lure:</span>{" "}
-                    {fish.lure.join(" / ")}
+                    {fish.lure.map((l) => (
+                      <Image
+                        key={l}
+                        src={`/lures/${l}_Lure.webp`}
+                        alt={`${l} lure`}
+                        width={24}
+                        height={24}
+                        className="inline-block mx-1"
+                      />
+                    ))}
                   </p>
                   <p>
                     <span className="font-semibold">Spot:</span>{" "}
