@@ -234,7 +234,7 @@ export default function FishingPage() {
                       {fish.lure.map((l) => (
                         <Image
                           key={l}
-                          src={`/lures/${l}_Lure.webp`}
+                          src={`/lures/${l.toUpperCase()}_Lure.webp`}
                           alt={`${l} lure`}
                           width={24}
                           height={24}
@@ -294,7 +294,7 @@ export default function FishingPage() {
                       title={`${m} lure`}
                     >
                       <Image
-                        src={`/lures/${m}_Lure.webp`}
+                        src={`/lures/${m.toUpperCase()}_Lure.webp`}
                         alt={`${m} lure`}
                         width={48}
                         height={40}
