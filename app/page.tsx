@@ -294,7 +294,7 @@ export default function FishingPage() {
                       title={`${m} lure`}
                     >
                       <Image
-                        src={`/lures/${m.toUpperCase()}_Lure.webp`}
+                        src={`/lures/${m}_Lure.webp`}
                         alt={`${m} lure`}
                         width={48}
                         height={40}
