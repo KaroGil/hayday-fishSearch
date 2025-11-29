@@ -247,7 +247,17 @@ export default function FishingPage() {
                         ? "Any spot"
                         : fish.spots.join(", ")}
                     </td>
-                    <td className="border p-2">{fish.circle}</td>
+                    <td
+                      className={`border p-2 ${
+                        fish.circle == "small"
+                          ? "text-xs"
+                          : fish.circle == "large"
+                          ? "text-2xl"
+                          : "text-base"
+                      }`}
+                    >
+                      {fish.circle}
+                    </td>
                     <td
                       className={`border p-2 ${
                         fish.eventOnly ? "bg-red-400 font-bold" : ""
@@ -344,8 +354,21 @@ export default function FishingPage() {
                     <span className="font-semibold">Spot:</span>{" "}
                     {fish.spots === "any" ? "Any spot" : fish.spots.join(", ")}
                   </p>
-                  <p>
-                    <span className="font-semibold">Circle:</span> {fish.circle}
+                  <p className="flex flex-row items-center gap-2">
+                    <span className="font-semibold">Circle:</span>{" "}
+                    {
+                      <p
+                        className={`${
+                          fish.circle == "small"
+                            ? "text-xs"
+                            : fish.circle == "large"
+                            ? "text-2xl"
+                            : "text-base"
+                        }`}
+                      >
+                        {fish.circle}
+                      </p>
+                    }
                   </p>
                   {fish.eventOnly && (
                     <p className="text-red-600 font-bold">Event Only</p>
